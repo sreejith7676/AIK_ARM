@@ -13,7 +13,7 @@ Usage:
         ./unpackimg android_boot.img       #unpack boot.img
         ./repackimg                        #repack new-boot.img
         ./cleanup                          #clean workspace
-
+        ./auto-pack-kernel.sh              #pack kernel to flashable zip
 </pre>
 >**Source:**  
 Magisk
