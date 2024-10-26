@@ -17,6 +17,10 @@ if [ -f "$SPLIT_FOLDER/kernel" ]; then
     zip -r9 UPDATE-AnyKernel3.zip * -x .git README.md *placeholder*
 
     echo "UPDATE-AnyKernel3.zip created successfully in $ANYKERNEL_FOLDER"
+
+    # Move and rename the zip file to the base directory
+    mv UPDATE-AnyKernel3.zip "$BASE_DIR/AnyKernel.zip"
+    echo "Moved and renamed zip to $BASE_DIR/AnyKernel.zip"
 else
     echo "Kernel file not found in $SPLIT_FOLDER"
 fi
