@@ -1,10 +1,17 @@
 #!/bin/bash
 
-if [[ -e 'split' || -e '.img' || -e 'ramdisk' ]]
-then
+# Check if folders or files exist and remove them
+if [[ -e 'split' || -e '.img' || -e 'ramdisk' ]]; then
     rm -rf split .img ramdisk
-    echo '[+]Workspace cleaned'
+    echo '[+] Workspace cleaned'
 else
-    echo '[!]Nothing to clean'
+    echo '[!] Nothing to clean'
 fi
+
+# Delete kernel file inside AnyKernel3 folder if it exists
+if [[ -e 'AnyKernel3/kernel' ]]; then
+    rm 'AnyKernel3/kernel'
+    echo '[+] Kernel file deleted from AnyKernel3 folder'
+fi
+
 
