@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Check if folders or files exist and remove them
-if [[ -e 'split' || -e '.img' || -e 'ramdisk' ]]; then
-    rm -rf split .img ramdisk
+if [[ -e 'split' || -e '.img' || -e 'ramdisk' || -e 'AnyKernel.zip' ]]; then
+    rm -rf split .img ramdisk AnyKernel.zip
     echo '[+] Workspace cleaned'
 else
     echo '[!] Nothing to clean'
