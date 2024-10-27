@@ -10,7 +10,7 @@ fi
 
 # Delete kernel file inside AnyKernel3 folder if it exists
 if [[ -e 'AnyKernel3/kernel' ]]; then
-    rm 'AnyKernel3/kernel'
+    rm 'AnyKernel3/Image'
     echo '[+] Kernel file deleted from AnyKernel3 folder'
 fi
 
