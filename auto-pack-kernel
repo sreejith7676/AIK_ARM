@@ -7,8 +7,8 @@ ANYKERNEL_FOLDER="$BASE_DIR/AnyKernel3"
 
 # Check if kernel file exists in split folder
 if [ -f "$SPLIT_FOLDER/kernel" ]; then
-    # Copy kernel to AnyKernel3 folder
-    cp "$SPLIT_FOLDER/kernel" "$ANYKERNEL_FOLDER/"
+    # Copy and rename kernel to Image in the AnyKernel3 folder
+    cp "$SPLIT_FOLDER/kernel" "$ANYKERNEL_FOLDER/Image"
 
     # Change to AnyKernel3 folder
     cd "$ANYKERNEL_FOLDER" || exit
@@ -24,4 +24,5 @@ if [ -f "$SPLIT_FOLDER/kernel" ]; then
 else
     echo "Kernel file not found in $SPLIT_FOLDER"
 fi
+
 
