@@ -9,6 +9,9 @@ fi
 ANDROID_VERSION="$1"
 KERNEL_VERSION="$2"
 
+# Define BASE_DIR as the base directory of the script
+BASE_DIR=$(dirname "$(realpath "$0")")
+
 # Determine the appropriate --kmi argument based on versions
 if [[ "$ANDROID_VERSION" == "12" && "$KERNEL_VERSION" == "5.10" ]]; then
     KMI="android12-5.10"
@@ -29,10 +32,9 @@ fi
 
 echo "Patching with --kmi $KMI..."
 
-# Execute the ksud command with the dynamically determined --kmi version
+# Navigate to the bin directory where ksud and magiskboot_arm are located
 cd bin
 ./ksud boot-patch -b "../boot.img" --magiskboot "./magiskboot_arm" --kmi "$KMI"
-
 
 # Move the patched kernel files to the base directory
 mv kernelsu_patched_* "$BASE_DIR"
