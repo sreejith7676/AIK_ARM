@@ -14,6 +14,7 @@ Usage:
         ./repackimg                        #repack new-boot.img
         ./cleanup                          #clean workspace
         ./auto-pack-kernel.sh              #pack kernel to flashable zip 
+        ./Patch_boot_KSU                   #Patch the boot.img with KernelSU
 </pre>
 >**Source:**  
 Magisk
