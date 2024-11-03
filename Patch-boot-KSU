@@ -1,0 +1,13 @@
+#!/bin/bash
+# Patch the boot image using KernelSU
+
+echo "Patching the boot image using KernelSU..."
+
+# Navigate to the bin directory where ksud and magiskboot_arm are located
+cd bin
+
+# Execute the ksud command to patch the boot image
+./ksud boot-patch -b "../boot.img" --magiskboot "./magiskboot_arm" --kmi android12-5.10
+
+echo "Patching completed."
+
