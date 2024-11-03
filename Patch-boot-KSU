@@ -1,18 +1,38 @@
 #!/bin/bash
-# Patch the boot image using KernelSU
 
-# Define the base directory (current directory)
-BASE_DIR=$(pwd)
+# Check if Android version and kernel version are provided as arguments
+if [ $# -lt 2 ]; then
+    echo "Usage: $0 <ANDROID_VERSION> <KERNEL_VERSION>"
+    exit 1
+fi
 
-echo "Patching the boot image using KernelSU..."
+ANDROID_VERSION="$1"
+KERNEL_VERSION="$2"
 
-# Navigate to the bin directory where ksud and magiskboot_arm are located
+# Determine the appropriate --kmi argument based on versions
+if [[ "$ANDROID_VERSION" == "12" && "$KERNEL_VERSION" == "5.10" ]]; then
+    KMI="android12-5.10"
+elif [[ "$ANDROID_VERSION" == "13" && "$KERNEL_VERSION" == "5.10" ]]; then
+    KMI="android13-5.10"
+elif [[ "$ANDROID_VERSION" == "13" && "$KERNEL_VERSION" == "5.15" ]]; then
+    KMI="android13-5.15"
+elif [[ "$ANDROID_VERSION" == "14" && "$KERNEL_VERSION" == "5.15" ]]; then
+    KMI="android14-5.15"
+elif [[ "$ANDROID_VERSION" == "14" && "$KERNEL_VERSION" == "6.1" ]]; then
+    KMI="android14-6.1"
+elif [[ "$ANDROID_VERSION" == "15" && "$KERNEL_VERSION" == "6.6" ]]; then
+    KMI="android15-6.6"
+else
+    echo "Unsupported Android or kernel version."
+    exit 1
+fi
+
+echo "Patching with --kmi $KMI..."
+
+# Execute the ksud command with the dynamically determined --kmi version
 cd bin
+./ksud boot-patch -b "../boot.img" --magiskboot "./magiskboot_arm" --kmi "$KMI"
 
-# Execute the ksud command to patch the boot image
-./ksud boot-patch -b "../boot.img" --magiskboot "./magiskboot_arm" --kmi android12-5.10
-
-echo "Patching completed."
 
 # Move the patched kernel files to the base directory
 mv kernelsu_patched_* "$BASE_DIR"
