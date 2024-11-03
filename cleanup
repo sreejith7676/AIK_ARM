@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Check if folders or files exist and remove them
-if [[ -e 'split' || -e 'ramdisk' || -e 'AnyKernel.zip' || -e 'new-boot.img' ]]; then
-    rm -rf split ramdisk AnyKernel.zip new-boot.img
+if [[ -e 'split' || -e 'ramdisk' || -e 'AnyKernel.zip' || -e 'new-boot.img' || -e 'kernelsu_patched_*' ]]; then
+    rm -rf split ramdisk AnyKernel.zip new-boot.img kernelsu_patched_*
     echo '[+] Workspace cleaned'
 else
     echo '[!] Nothing to clean'
